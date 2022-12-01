@@ -3,6 +3,8 @@
 #          cmp(a,b)<0   if a should be placed before b,
 #          cmp(a,b)==0  if arr is still sorted after a and b are exchanged,
 #          cmp(a,b)>0   if a should be placed behind b.
+
+
 def multi_sort(arr, cmp, method="None"):
     if(method=="quick"):
         quick_sort(arr,cmp)
@@ -18,6 +20,37 @@ def multi_sort(arr, cmp, method="None"):
 
 # must be in-place sort
 def merge_sort(arr,cmp):
+    if len(arr) > 1:
+
+   
+        r = len(arr)//2
+        L = arr[:r]
+        M = arr[r:]
+
+        merge_sort(L)
+        merge_sort(M)
+
+        i = j = k = 0
+
+        while i < len(L) and j < len(M):
+            if L[i] < M[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = M[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(M):
+            arr[k] = M[j]
+            j += 1
+            k += 1
+
     pass
 
 # must be in-place sort
